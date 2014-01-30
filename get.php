@@ -5,7 +5,11 @@
 	$mysqli = new mysqli("projectz-183549.mysql.binero.se", "183549_ks11640", "hannes123", "183549-projectz");
 	$mysqli->set_charset("utf8");
 	
-	$q = "SELECT * FROM servers";
+	$q = "";
+	if($_GET[field] != "" && $_GET[order] != "")
+		$q = "SELECT * FROM servers ORDER BY $_GET[field] $_GET[order]";
+	else
+		$q = "SELECT * FROM servers";
 	
 	$result = $mysqli->query($q);
 	
